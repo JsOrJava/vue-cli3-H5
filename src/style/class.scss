@@ -1,0 +1,27 @@
+/**
+  scss类 （@extend）
+ */
+
+/*左右两边对齐清除浮动 % 不会被打包
+---------------------------------------------------------------- */
+%clearFix {
+  content: '';
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+%border-bottom1 {
+  border-top: 1px  solid #F3F3F3;
+}
+
+%border1 {
+  border: 1px solid rgba(243,243,243,1);
+}
+
+/*处理iphonex小黑横条 % 不会被打包
+---------------------------------------------------------------- */
+%safe-area-ios {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}

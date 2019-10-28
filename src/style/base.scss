@@ -1,0 +1,225 @@
+/**
+  移动端基础样式
+ */
+
+@import "vw";
+@import "variable";
+@import "mixin";
+@import "class";
+
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin: 0;padding: 0;}
+a{text-decoration: none;}
+hr{background-color: #F0F0F0;height:1px;border:0;}
+li{list-style: none;}
+img{border: 0;vertical-align: middle;}
+input{outline: none}
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -webkit-text-size-adjust: none;
+  @extend %safe-area-ios;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.f-font-size12{font-size: 12px;}
+.f-font-size14{font-size: 14px;}
+
+.f-margin-right5 {margin-right: 5px}
+.f-margin-left5 {margin-left: 5px}
+.f-margin-top5 {margin-top: 5px}
+.f-margin-bottom5 {margin-bottom: 5px}
+
+.f-margin-right10 {margin-right: 10px}
+.f-margin-left10 {margin-left: 10px}
+.f-margin-top10 {margin-top: 10px}
+.f-margin-bottom10 {margin-bottom: 10px}
+
+.f-margin-bottom15 {margin-bottom: 15px}
+
+.f-margin-right20 {margin-right: 20px}
+.f-margin-left20 {margin-left: 20px}
+.f-margin-top20 {margin-top: 20px}
+.f-margin-bottom20 {margin-bottom: 20px}
+
+.f-margin-bottom30 {margin-bottom: 30px}
+
+.f-margin-bottom40 {margin-bottom: 40px}
+
+.f-scroll-y {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overscroll-behavior: contain; // 阻止滚动传播
+  scroll-behavior: smooth; // 滚动具有平滑效果
+}
+
+.f-inline-block {
+  display: inline-block;
+}
+
+/* 文字居中 */
+.f-tx-center {
+  text-align: center;
+}
+
+/* 文字垂直 */
+.f-va-tx-bottom {
+  vertical-align: text-bottom;
+}
+.f-va-tx-middle {
+  vertical-align: middle;
+}
+
+/* 文字超出部分... */
+.ellipsis__word {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* flex布局 */
+.flex-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  .flex-item {
+    flex: auto;
+  }
+  .flex-item-split {
+    flex: 1;
+  }
+}
+.flex-container-content-center {
+  justify-content: space-around;
+  align-items: center;
+}
+.flex-container-rounder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .flex-item {
+    flex: 1;
+  }
+}
+.flex-container-between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  .flex-item {
+    flex: 1;
+  }
+}
+
+/*上下居中布局*/
+.vam {
+  vertical-align: middle;
+  line-height: 0;
+  text-align: center;
+  &::after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+  }
+  > *{
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+}
+
+
+
+/* 解决浮动 */
+.clear {
+  &::after {
+    display: block;
+    content: '';
+    overflow: hidden;
+    visibility: hidden;
+    clear: both;
+  }
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+}
+
+/* 解决1pxISO变粗 - 方式一*/
+.input--parent {
+  position: relative;
+  .border--top {
+    position:absolute;
+    left:0;
+    top:0;
+    height:1px;
+    width:100%;
+    background: #E7E7E7;
+  }
+  .border--left {
+    position:absolute;
+    left:0;
+    top:0;
+    width:1px;
+    height:100%;
+    background: #E7E7E7;
+  }
+  .border--bottom {
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:1px;
+    width:100%;
+    background: #E7E7E7;
+  }
+  .border--right {
+    position:absolute;
+    right:0;
+    top:0;
+    width:1px;
+    height:100%;
+    background: #E7E7E7;
+  }
+}
+
+/* 方式二 */
+/* 上 */
+.borderTop:before {
+  content:"";
+  position:absolute;
+  z-index:2;
+  left:0;
+  top:0;
+  height:1px;
+  width:100%;
+  border-top:1px solid #ccc;
+  -webkit-transform-origin:0 0;
+  transform-origin:0 0;
+  -webkit-transform:scaleY(.5);
+  transform:scaleY(.5);
+}
+
+/* 方式三 */
+.input--parent__third {
+  border: 1px solid #ccc;
+  input {
+    border: none;
+  }
+}
